@@ -26,15 +26,17 @@ import * as fromServices from './services';
 export const ROUTES: Routes = [
   {
     path: '',
-    canActivate: [fromGuards.PizzasGuard],
+    canActivate: [ fromGuards.PizzasGuard ],
     component: fromContainers.ProductsComponent,
   },
   {
     path: 'new',
+    canActivate: [ fromGuards.PizzasGuard, fromGuards.ToppingsGuard ],
     component: fromContainers.ProductItemComponent,
   },
   {
     path: ':pizzaId',
+    canActivate: [ fromGuards.PizzaExistsGuards, fromGuards.ToppingsGuard ],
     component: fromContainers.ProductItemComponent,
   }
 ];
